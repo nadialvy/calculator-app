@@ -42,7 +42,7 @@ class MainScreen extends StatelessWidget{
           children: [
             //untuk user input angka
             Expanded(
-              child: Container()
+              child: buildResult()
             ),
 
             //untuk kolom angka
@@ -55,6 +55,39 @@ class MainScreen extends StatelessWidget{
       ),
     );
   }
+
+  Widget buildResult(){
+    return Container(
+      padding: const EdgeInsets.all(20),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Text(
+            '0',
+            overflow: TextOverflow.ellipsis,
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 36
+            ),
+          ),
+          const SizedBox(height: 15),
+          Padding(
+            padding: const EdgeInsets.all(3),
+            child: Text(
+              '0',
+              overflow: TextOverflow.ellipsis,
+              style: TextStyle(
+                color: Color.fromARGB(127, 255, 255, 255),
+                fontSize: 20,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
 
   Widget buildButtons(){
     return Container(
