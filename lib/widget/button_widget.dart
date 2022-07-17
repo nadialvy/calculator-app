@@ -17,9 +17,10 @@ class ButtonWidget extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
+    final color = getTextColor(text);
     final double fontSize = Utils.isOperator(text, hasEquals: true) ? 26 : 22;
     final style = TextStyle(
-      color: Colors.white,
+      color: color,
       fontSize: fontSize,
       fontWeight: FontWeight.bold,
     );
@@ -39,7 +40,7 @@ class ButtonWidget extends StatelessWidget{
             )
           ),
           child: text == '<' ?
-          const Icon(Icons.backspace_outlined, color: Colors.white)
+          const Icon(Icons.backspace_outlined, color: ColorsApp.delete)
           :
           Text(text, style: style,)
         ),
@@ -47,5 +48,20 @@ class ButtonWidget extends StatelessWidget{
     );
   }
 
+  Color getTextColor(String buttonText){
+    switch(buttonText){
+      case '+':
+      case '÷':
+      case '−':
+      case '×':
+      case '=':
+        return ColorsApp.operators;
+      case '<':
+      case 'AC':
+        return ColorsApp.delete;
+      default :
+        return ColorsApp.numbers;
+    }
+  }
 
 }
